@@ -1,0 +1,15 @@
+<%= form_tag cart_items_path , method: :post , data: { turbo: false } do %>
+    <% product = Product.find(params[:product_id]) %>
+    <%= hidden_field_tag :product_id, params[:product_id] %>
+    <%= "商品名" %>
+    <%= product.name %>
+    <br>
+    <%= "金額" %>
+    <%= product.price %>
+    <br>
+    <%= label_tag :qty, "数量" %>
+    <br>
+    <%= number_field_tag :qty %>
+
+    <%= submit_tag '商品を登録する' %>
+<% end %>

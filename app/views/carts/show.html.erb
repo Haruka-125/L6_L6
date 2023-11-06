@@ -1,0 +1,22 @@
+<% sum = 0 %>
+<% cart = @cartitems.all %>
+<% cart.each do |e| %>
+
+<% pro = Product.find(e.product_id) %>
+    <%= pro.name %>
+    <% pri = pro.price %>
+    <%= pri %>
+    <%= "円" %>
+    <% quantity = e.qty %>
+    <%= quantity %>
+    <%= "点" %>
+    <% sum += pri * quantity %>
+    <%= link_to 'カートから削除', cart_item_path(e.id) , data: {turbo_method: :delete } %>
+    <br>
+<% end %>
+
+<%= "合計金額" %>
+<%= sum %>
+<%= "円" %>
+
+<%= link_to 'トップへ' , products_path %>
